@@ -16,18 +16,30 @@ class App extends Component {
       name: 'wrld',
       boo: 'boo',
       color: 'blue',
-      underline: '',
+      charCount: 0,
       value: '',
       editor: '',
-      promptString : 'Clicky'
+      promptString : []
     };
 
   }
 
+
+
   handleClick({name, value}) {
     console.log('click: ',name,value);
+  }
+
+  generatePrompt({name, value}) {
+    let prompts = [
+      {subject: 'royalty', string:'You '}
+    ];
 
 
+
+    // let index = Math.trunc(Math.random()*10);
+    // console.log(index);
+    // this.setState({[name]:prompts[0]});
   }
 
   handleChange({name, value}) {
@@ -41,6 +53,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="App wrapper">
       <div className="App-logo"/>
@@ -48,16 +61,31 @@ class App extends Component {
       <div>
       <label>
       Clicky
-      <input name="promptString" value = {this.state.promptString} onClick = {({target}) => this.handleClick({target})} />
+
+        <select name="promptSelect">
+        prompts.map(prompt =>{
+          <option name="promptOption" value="{prompt.string}">{prompt.subject}</option>
+        })
+      </select>
 
       </label>
+
+<div>
+
+
+
+
       <label>
       Enter text here:
         <input name = "editor" value = {this.state.editor} onChange = {({target}) =>this.handleChange(target)}/>
       </label>
-        <label >
-          Enter text here:
+      </div>
+      <div>
+        <label>
+        characters:
+        <div name="charCount" value={this.state.charCount}>{this.state.charCount}</div>
         </label>
+        </div>
     </div>
     </div>
     );
