@@ -18,7 +18,7 @@ For this assignment:
 * You can stick with a single `App` component (feel free to try and split into multiple components)
 * Initialize state using `this.state = {}` in the constructor (don't forget to call `super()`
 * Write JSX in the `render` method of the `App` component
-  * Use `this.state.prop` to access state values
+  * Use `this.state.<name of state>` to access state values
   * Use `e => { this.someMethod(e.target.value) }` (or whatever you need from the event object) to call
   a method you create on the component that in turn calls `this.setState({ prop: newValue })` to update the value
   
