@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './index.css';
 
 
 class App extends Component {
-  // this is a call to Component.constructor()
-  // data down, events up
+
   constructor(props) {
     super(props);
+
+    App.defaultProps = {
+      charCounter: 0
+    }
 
     this.state = {
       name: 'wrld',
@@ -15,39 +18,31 @@ class App extends Component {
       color: 'blue',
       underline: ''
     };
+
   }
 
   handleClick(target) {
     console.log('click: ',target);
-    // const name = this.state.name === 'wrld' ? 'mars' : 'wrld';
-    // this.setState(headerColor);
-    // this.setState({textDecoration: underline})
-    // state is a set of keys
-    // this.setState({ secondHeaderColor});
+
   }
 
   handleChange(target) {
     console.log('change: ',target);
 
-    // state is a set of keys
-    // console.log('v: ',value)
-    // this.setState({ value });
+
   }
 
   handleSelect(target) {
     console.log('select: ',target);
-
-
   }
 
   // look up "class fields" - property initializer for properties outside of the constructor
 
   render() {
-    // either a state change or a prop change will re-render
-    // inside the render function you can use fat arrow functions
+
     return (
-      <div>
-        <div className="App" onClick={({target}) => this.handleClick(target)}>
+      <div className="App-logo">
+        <div className="App wrapper" onClick={({target}) => this.handleClick(target)}>
           Hello {this.state.name}
         </div>
         <div>
