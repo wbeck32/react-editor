@@ -16,55 +16,41 @@ class App extends Component {
       name: 'wrld',
       boo: 'boo',
       color: 'blue',
-      underline: ''
+      underline: '',
+      value: '',
+      editor: ''
     };
 
   }
 
   handleClick(target) {
-    console.log('click: ',target);
+    console.log('click: ', target);
 
   }
 
-  handleChange(target) {
-    console.log('change: ',target);
-
-
+  handleChange({name,value}) {
+    console.log('change: ', name, value);
+    this.setState({[name]: value})
   }
 
   handleSelect(target) {
-    console.log('select: ',target);
+    console.log('select: ', target);
   }
 
-  // look up "class fields" - property initializer for properties outside of the constructor
-
   render() {
-
     return (
-      <div className="App-logo">
-        <div className="App wrapper" onClick={({target}) => this.handleClick(target)}>
-          Hello {this.state.name}
-        </div>
-        <div>
-          <input
-            value={this.state.name}
-            onChange={({target}) =>
-              this.handleChange(target)}
-          />
-        <h1>Good morning!</h1>
+      <div className="App wrapper">
+      <div className="App-logo"/>
+      <h3> eddy - itor awaits your input </h3>
+      <div>
+        <input name = "editor" value = {this.state.editor} onChange = {({target}) =>this.handleChange(target)}/>
 
-          <label>
+        <label >
           Enter text here:
-          <input
-            value={this.state.name}
-            type="textarea"
-            onChange={({target}) =>
-              this.handleChange(target)}
-            onSelect={({target}) => this.handleSelect(target)}
-          />
-          </label>
-        </div>
-      </div>
+          <input value = {this.state.name}type = "textarea"onChange = {({target}) => this.handleChange(target)} onSelect = {({target}) => this.handleSelect(target)}/>
+        </label>
+    </div>
+    </div>
     );
   }
 }
