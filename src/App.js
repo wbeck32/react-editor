@@ -18,19 +18,22 @@ class App extends Component {
       color: 'blue',
       underline: '',
       value: '',
-      editor: ''
+      editor: '',
+      promptString : 'Clicky'
     };
 
   }
 
-  handleClick(target) {
-    console.log('click: ', target);
+  handleClick({name, value}) {
+    console.log('click: ',name,value);
+
 
   }
 
-  handleChange({name,value}) {
-    console.log('change: ', name, value);
-    this.setState({[name]: value})
+  handleChange({name, value}) {
+    console.log('change: ',name,value);
+    this.setState({ [name]: value });
+    // this.setState[target.value] = target.value;
   }
 
   handleSelect(target) {
@@ -43,11 +46,17 @@ class App extends Component {
       <div className="App-logo"/>
       <h3> eddy - itor awaits your input </h3>
       <div>
-        <input name = "editor" value = {this.state.editor} onChange = {({target}) =>this.handleChange(target)}/>
+      <label>
+      Clicky
+      <input name="promptString" value = {this.state.promptString} onClick = {({target}) => this.handleClick({target})} />
 
+      </label>
+      <label>
+      Enter text here:
+        <input name = "editor" value = {this.state.editor} onChange = {({target}) =>this.handleChange(target)}/>
+      </label>
         <label >
           Enter text here:
-          <input value = {this.state.name}type = "textarea"onChange = {({target}) => this.handleChange(target)} onSelect = {({target}) => this.handleSelect(target)}/>
         </label>
     </div>
     </div>
