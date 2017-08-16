@@ -29,40 +29,46 @@ class App extends Component {
         {index: 9, subject: 'adventure',  prompt:'nine'},
         {index: 10, subject:'childhood', prompt: 'ten'}
       ],
-      promptText: 'hullo',
       prompt: 'p',
-     direction: 'ltr'
+      fontSize: 12,
+      fontFamily: '',
+      countColor: ''
     }
 
   }
 
   handleClick({name, value}) {
     console.log('click: ',name, value);
-    value === 'ltr' ? this.setState({direction: 'ltr'}) : this.setState({direction: 'rtl'})
+    this.setState({[name]: value});
   }
 
   handleChange({name, value}) {
     console.log('name: ', name, 'value: ', value);
     console.log(value.length);
     this.setState({editor: value });
-    let msg = 'hey!'
+    let msg = ' less than 1500 characters'
     this.setState({charCount: value.length + msg})
-    // this.setState[target.value] = target.value;
+    if (value.length > 1500) {
+      this.setState({countColor: '#FF5733'})
+      this.setState({charCount: value.length + msg})
+    }
   }
 
   handlePromptSelect(target) {
     this.setState({prompt : this.state.prompts[target.value].prompt});
     this.setState({promptText : this.state.prompt})
-    // this.setState({target.value})
   }
 
 
   render() {
     return (
-      <div className="App wrapper">
-      <div className="App-logo"/>
-      <h3> eddy-itor awaits your input </h3>
       <div>
+      <div className="App-logo"></div>
+      <h3 style={{fontFamily: this.state.fontFamily}}> eddy-itor awaits your input </h3>
+      <div>
+
+
+      <span className="labelTxt">not sure what to write?</span>
       <span>
       <select name="promptChooser" value={this.state.value} onChange= {({target}) => this.handlePromptSelect(target)}>
       {
@@ -75,32 +81,37 @@ class App extends Component {
       <span name="promptText" value={this.state.value}>
       {this.state.prompt}
       </span>
+
       </div>
-<label>
-<span>text direction</span>
+      <div>
+
+      <span className="labelTxt">font style</span>
+      <button className="myButton" name="fontFamily" value={"'Source Code Pro', monospace"} onClick = {({target}) => this.handleClick(target)}>plain</button>
+      <button className="myButton" name="fontFamily" value={"'Sacramento', cursive"} onClick = {({target}) => this.handleClick(target)}>script</button>
+      <button className="myButton" name="fontFamily" value={"'Monoton', cursive"} onClick = {({target}) => this.handleClick(target)}>other</button>
+
+      </div>
+      <div>
+
+<span className="labelTxt">text size</span>
 <span>
-left to right <input name="direction" value="ltr" type="radio" onClick = {({target}) => this.handleClick(target)}/>&nbsp;&nbsp;
-right to left <input name="direction" value="rtl" type="radio" onClick = {({target}) => this.handleClick(target)}/>
+small <input name="fontSize" value={12}  type="radio" onClick = {({target}) => this.handleClick(target)}/>&nbsp;&nbsp;
+medium <input name="fontSize" value={18} type="radio" onClick = {({target}) => this.handleClick(target)}/>&nbsp;&nbsp;
+large <input name="fontSize" value={36} type="radio" onClick = {({target}) => this.handleClick(target)}/>
 </span>
+</div>
 
-</label>
       <div>
-      <span>Enter text here:</span>
-      <span> <textarea rows="20" name="editor" style={{direction: this.state.direction}}  value = {this.state.editor} onChange = {({target}) => this.handleChange(target)}/>
+      <span className="labelTxt">Enter text here:</span>
+      <span> <textarea rows="20" name="editor" style={{fontFamily: this.state.fontFamily, fontSize: this.state.fontSize}} value = {this.state.editor} onChange = {({target}) => this.handleChange(target)}/>
       </span>
-
       </div>
       <div>
-
-      <span>
-      characters:
+      <span className="labelTxt">characters:</span>
+      <span name="charCount" style={{color: this.state.countColor}} value={this.state.charCount}>{this.state.charCount}
       </span>
-      <span name="charCount" value={this.state.charCount}>{this.state.charCount}
-      </span>
-
       </div>
-      </div>
-
+</div>
     );
   }
 }

@@ -1,31 +1,39 @@
 body {
   margin: 0;
   padding: 10px 30px;
-  font-family: sans-serif;
+  font-family: Source Code Pro, monospace;
   font-size: 16px;
+  background-color: #C0C6DB;
+  color: #0B2A93;
 }
 
 h3 {
-  color: red;
+  color:#0B2A93;
   text-align: center;
   font-size: 2rem;
 }
 div {
-  /* border: .5px solid red; */
-  margin: 20px;
+  margin: 30px;
   width: 90%;
 }
 
 span {
-  /* border: 2px solid green; */
-  width: 40%;
   margin: 20px;
   text-align: left;
   vertical-align: top;
+  padding: 0 20px;
+}
+.labelTxt {
+  text-align: right;
+  width: 15%;
+}
+
+.myButton {
+  background-color: pink;
 }
 
 textarea {
-  width: 75%;
+  width: 65%;
   height: 30%;
 
 }
