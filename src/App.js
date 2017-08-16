@@ -52,7 +52,7 @@ class App extends Component {
 
     handlePromptSelect(target) {
       // console.log('change: ',target.value, target.name);
-      this.state.prompt = this.state.prompts[target.value].prompt;
+      this.setState({prompt : this.state.prompts[target.value].prompt});
       // console.log('prompt: ', this.state.prompt)
       this.setState({promptText : this.state.prompt})
       // console.log({editor})
@@ -67,6 +67,7 @@ class App extends Component {
         <div className="App-logo"/>
         <h3> eddy - itor awaits your input </h3>
         <div>
+        <span>
           <select name="promptChooser" value={this.state.value} onChange= {({target}) => this.handlePromptSelect(target)}>
           {
             this.state.prompts.map(prompt => (
@@ -74,21 +75,29 @@ class App extends Component {
             ))
           }
           </select>
-        </div>
-        <div name="promptText" value={this.state.value}>Writing prompt: {this.state.prompt}
+          </span>
+          <span name="promptText" value={this.state.value}>
+          Writing prompt: {this.state.prompt}
+          </span>
         </div>
 
+
         <div>
-        <label>
-        Enter text here:
-        <textarea name ="editor" value = {this.state.editor} onChange = {({target}) => this.handleChange(target)}/>
-        </label>
+
+
+        <span>Enter text here:</span>
+       <span> <textarea name ="editor" value = {this.state.editor} onChange = {({target}) => this.handleChange(target)}/>
+       </span>
+
         </div>
         <div>
-        <label>
+
+        <span>
         characters:
-        <div name="charCount" value={this.state.charCount}>{this.state.charCount}</div>
-        </label>
+        </span>
+        <span name="charCount" value={this.state.charCount}>{this.state.charCount}
+        </span>
+
         </div>
         </div>
 

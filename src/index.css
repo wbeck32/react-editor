@@ -8,10 +8,24 @@ h1 {
   color: red;
 }
 
+textarea {
+  width: 75%;
+  height: 30%;
+}
+div {
+  border: .5px solid red;
+}
+span {
+  border: 2px solid green;
+  width: 50%;
+}
+
 .wrapper {
   text-align: left;
 
 }
+
+
 
 .editor {
   width: 300px;
