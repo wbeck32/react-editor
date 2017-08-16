@@ -96,7 +96,7 @@ large <input name="fontSize" value={36} type="radio" onClick = {({target}) => th
 </div>
 
       <div>
-      <span className="labelTxt">Enter text here:</span>
+      <span className="labelTxt">enter text here:</span>
       <span> <textarea rows="20" name="editor" style={{fontFamily: this.state.fontFamily, fontSize: this.state.fontSize}} value = {this.state.editor} onChange = {({target}) => this.handleChange(target)}/>
       </span>
       </div>
