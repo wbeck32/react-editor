@@ -2,36 +2,37 @@ body {
   margin: 0;
   padding: 10px 30px;
   font-family: sans-serif;
+  font-size: 16px;
 }
 
-h1 {
+h3 {
   color: red;
+  text-align: center;
+  font-size: 2rem;
+}
+div {
+  /* border: .5px solid red; */
+  margin: 20px;
+  width: 90%;
+}
+
+span {
+  /* border: 2px solid green; */
+  width: 40%;
+  margin: 20px;
+  text-align: left;
+  vertical-align: top;
 }
 
 textarea {
   width: 75%;
   height: 30%;
-}
-div {
-  border: .5px solid red;
-}
-span {
-  border: 2px solid green;
-  width: 50%;
-}
-
-.wrapper {
-  text-align: left;
 
 }
 
-
-
-.editor {
-  width: 300px;
-  margin: 40px;
+.textR2L {
+  direction: rtl;
 }
-
 
 
 .App-logo {

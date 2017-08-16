@@ -30,79 +30,79 @@ class App extends Component {
         {index: 10, subject:'childhood', prompt: 'ten'}
       ],
       promptText: 'hullo',
-      prompt: 'p'
-
+      prompt: 'p',
+     direction: 'ltr'
     }
 
-    }
-
-    handleClick({name, value}) {
-      console.log('click: ',name,value);
-    }
-
-    handleChange({name, value}) {
-      // console.log('change: ',target.value);
-      // console.log(typeof this.state.prompts);
-      console.log('name: ', name, 'value: ', value);
-      console.log(value.length);
-      this.setState({editor: value });
-      this.setState({charCount: value.length})
-      // this.setState[target.value] = target.value;
-    }
-
-    handlePromptSelect(target) {
-      // console.log('change: ',target.value, target.name);
-      this.setState({prompt : this.state.prompts[target.value].prompt});
-      // console.log('prompt: ', this.state.prompt)
-      this.setState({promptText : this.state.prompt})
-      // console.log({editor})
-      // this.setState({target.value})
-    }
-
-
-
-    render() {
-      return (
-        <div className="App wrapper">
-        <div className="App-logo"/>
-        <h3> eddy - itor awaits your input </h3>
-        <div>
-        <span>
-          <select name="promptChooser" value={this.state.value} onChange= {({target}) => this.handlePromptSelect(target)}>
-          {
-            this.state.prompts.map(prompt => (
-            <option key={prompt.index} value={prompt.index}>{prompt.subject}</option>
-            ))
-          }
-          </select>
-          </span>
-          <span name="promptText" value={this.state.value}>
-          Writing prompt: {this.state.prompt}
-          </span>
-        </div>
-
-
-        <div>
-
-
-        <span>Enter text here:</span>
-       <span> <textarea name ="editor" value = {this.state.editor} onChange = {({target}) => this.handleChange(target)}/>
-       </span>
-
-        </div>
-        <div>
-
-        <span>
-        characters:
-        </span>
-        <span name="charCount" value={this.state.charCount}>{this.state.charCount}
-        </span>
-
-        </div>
-        </div>
-
-      );
-    }
   }
 
-  export default App;
+  handleClick({name, value}) {
+    console.log('click: ',name, value);
+    value === 'ltr' ? this.setState({direction: 'ltr'}) : this.setState({direction: 'rtl'})
+  }
+
+  handleChange({name, value}) {
+    console.log('name: ', name, 'value: ', value);
+    console.log(value.length);
+    this.setState({editor: value });
+    let msg = 'hey!'
+    this.setState({charCount: value.length + msg})
+    // this.setState[target.value] = target.value;
+  }
+
+  handlePromptSelect(target) {
+    this.setState({prompt : this.state.prompts[target.value].prompt});
+    this.setState({promptText : this.state.prompt})
+    // this.setState({target.value})
+  }
+
+
+  render() {
+    return (
+      <div className="App wrapper">
+      <div className="App-logo"/>
+      <h3> eddy-itor awaits your input </h3>
+      <div>
+      <span>
+      <select name="promptChooser" value={this.state.value} onChange= {({target}) => this.handlePromptSelect(target)}>
+      {
+        this.state.prompts.map(prompt => (
+          <option key={prompt.index} value={prompt.index}>{prompt.subject}</option>
+        ))
+      }
+      </select>
+      </span>
+      <span name="promptText" value={this.state.value}>
+      {this.state.prompt}
+      </span>
+      </div>
+<label>
+<span>text direction</span>
+<span>
+left to right <input name="direction" value="ltr" type="radio" onClick = {({target}) => this.handleClick(target)}/>&nbsp;&nbsp;
+right to left <input name="direction" value="rtl" type="radio" onClick = {({target}) => this.handleClick(target)}/>
+</span>
+
+</label>
+      <div>
+      <span>Enter text here:</span>
+      <span> <textarea rows="20" name="editor" style={{direction: this.state.direction}}  value = {this.state.editor} onChange = {({target}) => this.handleChange(target)}/>
+      </span>
+
+      </div>
+      <div>
+
+      <span>
+      characters:
+      </span>
+      <span name="charCount" value={this.state.charCount}>{this.state.charCount}
+      </span>
+
+      </div>
+      </div>
+
+    );
+  }
+}
+
+export default App;
