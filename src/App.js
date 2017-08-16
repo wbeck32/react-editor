@@ -18,17 +18,19 @@ class App extends Component {
       editor: '',
       prompts: [
         {index: 0, subject: 'Choose a writing prompt', prompt: ''},
-        {index: 1, subject: 'sudden riches', prompt: ''},
-        {index: 2, subject: 'sudden fame', prompt: ''},
-        {index: 3, subject: 'tragedy', prompt: ''},
-        {index: 4, subject: 'love', prompt: ''},
-        {index: 5, subject: 'school', prompt: ''},
-        {index: 6, subject: 'travel', prompt: ''},
-        {index: 7 ,subject: 'moving to a new city', prompt: ''},
-        {index: 8, subject: 'apocalypse', prompt: ''},
-        {index: 9, subject: 'adventure',  prompt:''},
-        {index: 10, subject:'childhood', prompt: ''}
-      ]
+        {index: 1, subject: 'sudden riches', prompt: 'one'},
+        {index: 2, subject: 'sudden fame', prompt: 'two'},
+        {index: 3, subject: 'tragedy', prompt: 'three'},
+        {index: 4, subject: 'love', prompt: 'four'},
+        {index: 5, subject: 'school', prompt: 'five'},
+        {index: 6, subject: 'travel', prompt: 'six'},
+        {index: 7 ,subject: 'moving to a new city', prompt: 'seven'},
+        {index: 8, subject: 'apocalypse', prompt: 'eight'},
+        {index: 9, subject: 'adventure',  prompt:'nine'},
+        {index: 10, subject:'childhood', prompt: 'ten'}
+      ],
+      promptText: 'hullo',
+      prompt: 'p'
 
     }
 
@@ -38,15 +40,23 @@ class App extends Component {
       console.log('click: ',name,value);
     }
 
-    handleChange(target) {
-      console.log('change: ',target.value);
+    handleChange({name, value}) {
+      // console.log('change: ',target.value);
       // console.log(typeof this.state.prompts);
-      // this.setState({ [name]: value });
+      console.log('name: ', name, 'value: ', value);
+      console.log(value.length);
+      this.setState({editor: value });
+      this.setState({charCount: value.length})
       // this.setState[target.value] = target.value;
     }
 
     handlePromptSelect(target) {
-      console.log('change: ',target.value);
+      // console.log('change: ',target.value, target.name);
+      this.state.prompt = this.state.prompts[target.value].prompt;
+      // console.log('prompt: ', this.state.prompt)
+      this.setState({promptText : this.state.prompt})
+      // console.log({editor})
+      // this.setState({target.value})
     }
 
 
@@ -57,20 +67,18 @@ class App extends Component {
         <div className="App-logo"/>
         <h3> eddy - itor awaits your input </h3>
         <div>
-
-        <select name="promptChooser" value={this.state.value} onChange= {({target}) => this.handlePromptSelect(target)}>
-        {
-          this.state.prompts.map(prompt => (
-           <option key={prompt.index} value={prompt.index}>{prompt.subject}</option>
-          ))
-        }
-        </select>
-
-
+          <select name="promptChooser" value={this.state.value} onChange= {({target}) => this.handlePromptSelect(target)}>
+          {
+            this.state.prompts.map(prompt => (
+            <option key={prompt.index} value={prompt.index}>{prompt.subject}</option>
+            ))
+          }
+          </select>
+        </div>
+        <div name="promptText" value={this.state.value}>Writing prompt: {this.state.prompt}
         </div>
 
         <div>
-
         <label>
         Enter text here:
         <textarea name ="editor" value = {this.state.editor} onChange = {({target}) => this.handleChange(target)}/>
