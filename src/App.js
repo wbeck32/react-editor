@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './index.css';
 
 class App extends Component {
@@ -18,18 +17,18 @@ class App extends Component {
       editor: '',
       prompts: [
         {index: 0, subject: 'Choose a writing prompt', prompt: ''},
-        {index: 1, subject: 'sudden riches', prompt: 'one'},
-        {index: 2, subject: 'sudden fame', prompt: 'two'},
-        {index: 3, subject: 'tragedy', prompt: 'three'},
-        {index: 4, subject: 'love', prompt: 'four'},
-        {index: 5, subject: 'school', prompt: 'five'},
-        {index: 6, subject: 'travel', prompt: 'six'},
-        {index: 7 ,subject: 'moving to a new city', prompt: 'seven'},
-        {index: 8, subject: 'apocalypse', prompt: 'eight'},
-        {index: 9, subject: 'adventure',  prompt:'nine'},
-        {index: 10, subject:'childhood', prompt: 'ten'}
+        {index: 1, subject: 'sudden riches', prompt: 'The PowerBall is up to $435M and you buy the winning ticket.'},
+        {index: 2, subject: 'sudden fame', prompt: 'You recreate the Star Wars kid video and it goes viral worldwide.'},
+        {index: 3, subject: 'tragedy', prompt: 'Your significant other dies suddenly. How do you remember them?.'},
+        {index: 4, subject: 'love', prompt: 'The person at the other end of the bar is checking you out. They send you a drink.'},
+        {index: 5, subject: 'school', prompt: 'You win a full scholarship including a generous living stipend to the school of your choice. What do you study?'},
+        {index: 6, subject: 'travel', prompt: 'You wake up in the most fascinating place in the world. Where are you?'},
+        {index: 7 ,subject: 'moving to a new city', prompt: 'It\'s your first night in your new city. What are you going to do?'},
+        {index: 8, subject: 'apocalypse', prompt: 'The zombies have risen and you need to make a plan.'},
+        {index: 9, subject: 'adventure',  prompt:'You\'re forced to leave your home with nothing but whatever you can carry. What do you take? How do you survive?'},
+        {index: 10, subject:'childhood', prompt: 'You\'re eight years old again. What will you do today?'}
       ],
-      prompt: 'p',
+      prompt: '',
       fontSize: 12,
       fontFamily: '',
       countColor: ''
@@ -38,13 +37,10 @@ class App extends Component {
   }
 
   handleClick({name, value}) {
-    console.log('click: ',name, value);
     this.setState({[name]: value});
   }
 
   handleChange({name, value}) {
-    console.log('name: ', name, 'value: ', value);
-    console.log(value.length);
     this.setState({editor: value });
     let msg = ' less than 1500 characters'
     this.setState({charCount: value.length + msg})
@@ -59,11 +55,9 @@ class App extends Component {
     this.setState({promptText : this.state.prompt})
   }
 
-
   render() {
     return (
       <div>
-      <div className="App-logo"></div>
       <h3 style={{fontFamily: this.state.fontFamily}}> eddy-itor awaits your input </h3>
       <div>
 
