@@ -9,20 +9,39 @@ class App extends Component {
     super(props);
 
     App.defaultProps = {
-      charCounter: 0
+      charCount: 0
     }
 
     this.state = {
       name: 'wrld',
-      boo: 'boo',
-      color: 'blue',
       charCount: 0,
       value: '',
       editor: '',
-      promptString : []
-    };
+      prompts: [
+      ['Choose a writing prompt', ''],
+      ['sudden riches', ''],
+      [  'sudden fame',  ''],
+      [  'tragedy',  ''],
+      [  'love',  ''],
+      [  'school',  ''],
+      [  'travel',  ''],
+      [  'moving to a new city',  ''],
+      [  'apocalypse',  ''],
+      [  'adventure',  ''],
+      [  'childhood',  '']]
+  };
 
-  }
+ this.promptItems = this.state.prompts.map(prompt => {
+      return <option name="promptOption" value="{prompt[1]}">{prompt[0]}</option>
+})
+
+
+
+}
+
+
+
+
 
 
 
@@ -30,21 +49,10 @@ class App extends Component {
     console.log('click: ',name,value);
   }
 
-  generatePrompt({name, value}) {
-    let prompts = [
-      {subject: 'royalty', string:'You '}
-    ];
-
-
-
-    // let index = Math.trunc(Math.random()*10);
-    // console.log(index);
-    // this.setState({[name]:prompts[0]});
-  }
 
   handleChange({name, value}) {
     console.log('change: ',name,value);
-    this.setState({ [name]: value });
+    // this.setState({ [name]: value });
     // this.setState[target.value] = target.value;
   }
 
@@ -53,7 +61,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App wrapper">
       <div className="App-logo"/>
@@ -61,12 +68,10 @@ class App extends Component {
       <div>
       <label>
       Clicky
-
-        <select name="promptSelect">
-        prompts.map(prompt =>{
-          <option name="promptOption" value="{prompt.string}">{prompt.subject}</option>
-        })
+      <select name="promptSelect">
+      {this.promptItems}
       </select>
+
 
       </label>
 
